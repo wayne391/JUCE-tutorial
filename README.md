@@ -6,7 +6,7 @@ My teaching materials :D
 * lesson 0: Setup
 * lesson 1: Basic
     * Basic 
-        * Bus
+        * [Bus](https://docs.juce.com/master/tutorial_audio_bus_layouts.html)
         * Knob 
         * State
         * monitoring
