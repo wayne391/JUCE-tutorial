@@ -11,7 +11,7 @@ My teaching materials :D
         * State
         * monitoring
             * RTF
-    * dB scale 
+    * [Log scale](https://hackmd.io/@v10vZJlnRcKyhTtriMUrsQ/HyO31tMVq)
 * lesson 2: FIR filter and spectrum
     * [conv](https://hackmd.io/@v10vZJlnRcKyhTtriMUrsQ/S158cuKX5)
     * [sinc filter](https://hackmd.io/@v10vZJlnRcKyhTtriMUrsQ/SkoEXONM5)
