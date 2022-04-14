@@ -6,12 +6,12 @@ My teaching materials :D
 * lesson 0: Setup
 * lesson 1: Basic
     * Basic 
-        * Bus
+        * [Bus](https://docs.juce.com/master/tutorial_audio_bus_layouts.html)
         * Knob 
         * State
         * monitoring
             * RTF
-    * dB scale 
+    * [Log scale](https://hackmd.io/@v10vZJlnRcKyhTtriMUrsQ/HyO31tMVq)
 * lesson 2: FIR filter and spectrum
     * [conv](https://hackmd.io/@v10vZJlnRcKyhTtriMUrsQ/S158cuKX5)
     * [sinc filter](https://hackmd.io/@v10vZJlnRcKyhTtriMUrsQ/SkoEXONM5)
