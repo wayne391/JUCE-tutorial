@@ -102,9 +102,12 @@ void TutorialAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
         
         // ===== Start Coding ===== //
         // some DSP stuff
+        ApplyInputGain(buffer);
         // ...
         // ...
+        // dsp functions
         // ...
+        ApplyOutputGain(buffer);
         // ===== End Coding ===== //
         
     }

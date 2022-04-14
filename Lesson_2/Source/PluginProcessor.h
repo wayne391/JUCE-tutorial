@@ -71,9 +71,9 @@ private:
     AudioProcessorValueTreeState parameters;
     
     // filter
-//    dsp::Convolution myfilter;
-//    AudioBuffer<float> coeffBuffer;
-    firFilter myfilter;
+    dsp::Convolution myfilter;
+    AudioBuffer<float> coeffBuffer;
+//    firFilter myfilter;
     
     Array<float> coeff{
             0.000000000000000000,

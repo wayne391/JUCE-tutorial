@@ -81,26 +81,26 @@ void TutorialAudioProcessor::prepareToPlay (double sampleRate, int numSamples)
     std::cout << " > Filter Size: " << coeff.size() << std::endl;
     
     // -- Method 1 - Use Convolution -- //
-//    coeffBuffer = AudioBuffer<float>(1, (int) coeff.size());     /* Initialize the buffer */
-//    coeffBuffer.copyFrom(0, 0, coeff.data(), (int) coeff.size()); /* Vector to buffer */
-//    // coeffBuffer.reverse(0, 0, convInSize); /* Call this line when load params from pytorch */
-//
-//    myfilter.reset(); /* Resets the processing pipeline ready to start a new stream of data */
-//    myfilter.loadImpulseResponse( /* Load coeff as IR */
-//               std::move (coeffBuffer),
-//               spec.sampleRate,
-//               dsp::Convolution::Stereo::yes,
-//               dsp::Convolution::Trim::no,
-//               dsp::Convolution::Normalise::no);
-//     myfilter.prepare(spec); /* Must be called before first calling process */
+    coeffBuffer = AudioBuffer<float>(1, (int) coeff.size());     /* Initialize the buffer */
+    coeffBuffer.copyFrom(0, 0, coeff.data(), (int) coeff.size()); /* Vector to buffer */
+    // coeffBuffer.reverse(0, 0, convInSize); /* Call this line when load params from pytorch */
+
+    myfilter.reset(); /* Resets the processing pipeline ready to start a new stream of data */
+    myfilter.loadImpulseResponse( /* Load coeff as IR */
+               std::move (coeffBuffer),
+               spec.sampleRate,
+               dsp::Convolution::Stereo::yes,
+               dsp::Convolution::Trim::no,
+               dsp::Convolution::Normalise::no);
+     myfilter.prepare(spec); /* Must be called before first calling process */
     
     
     // -- Method 2 - Use FIR -- //
-    dsp::FIR::Coefficients<float>::Ptr coeffPtr = new dsp::FIR::Coefficients<float> (
-                    coeff.getRawDataPointer(),  coeff.size());
-    myfilter.reset(); /* Resets the processing pipeline ready to start a new stream of data */
-    myfilter.state = *coeffPtr;
-    myfilter.prepare(spec); /* Must be called before first calling process */
+//    dsp::FIR::Coefficients<float>::Ptr coeffPtr = new dsp::FIR::Coefficients<float> (
+//                    coeff.getRawDataPointer(),  coeff.size());
+//    myfilter.reset(); /* Resets the processing pipeline ready to start a new stream of data */
+//    myfilter.state = *coeffPtr;
+//    myfilter.prepare(spec); /* Must be called before first calling process */
 
     
     // -- clear caches -- //
@@ -134,10 +134,13 @@ void TutorialAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
         // ===== Start Coding ===== //
         // some DSP stuff
         
+        ApplyInputGain(buffer);
+        
         dsp::AudioBlock<float> block(buffer);
         dsp::ProcessContextReplacing<float> context(block);
         myfilter.process(context);
         
+        ApplyOutputGain(buffer);
         // ===== End Coding ===== //
         
     }
